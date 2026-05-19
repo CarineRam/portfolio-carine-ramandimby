@@ -1,0 +1,327 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+  }
+  .dark {
+    --background: #0D0D1A;
+    --foreground: #ededed;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Comfortaa", sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  html {
+    scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+/*@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}*/
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes loadingBar {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.float-1 { animation: float 3s ease-in-out infinite; }
+.float-2 { animation: float 3s ease-in-out infinite 0.5s; }
+.float-3 { animation: float 3s ease-in-out infinite 1s; }
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shahow: 0 0 5px rgba(255,141,161,0.5);
+    /*transform: scale(0.6);*/
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255,141,161,0.9), 0 0 40px rgba(255,141,161,0.4);
+    /*transform: scale(0.7);*/
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animation-border {
+  background: linear-gradient(180deg #ff8da1, #b8a9ff, #7c6ef5, #ff8da1);
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+.animated-border {
+  background: linear-gradient(180deg, #ff8da1, #b8a9ff, #7c6ef5, #ff8da1);
+  background-size: 200%, 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+.shimmer-name {
+  background: linear-gradient(
+    90deg,
+    #7c6ef5 0%,
+    #ff8da1 30%,
+    #ffffff 50%,
+    #ff8da1 70%,
+    #7c6ef5 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerName 3s linear infinite;
+}
+
+.loading-bar {
+  animation: loadingBar 2s ease-out forwards;
+}
+
+.animate-from-left {
+  animation: slideFromLeft 0.8s ease-out both;
+}
+
+.animate-from-right {
+  animation: slideFromRight 0.8s ease-out both;
+}
+
+/* Default state - hidden below */
+.experience-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Triggered state - visible in place */
+.experience-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skill card animation */
+.skill-card {
+  opacity: 0;
+  transform: translateY(30 px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, border-color 0.3s, scale 0.3s;
+  will-change: opacity, transform;
+}
+
+.skill-card:hover {
+  box-shadow: 
+    0 0 5px rgba(255, 141, 161, 0.4),
+    0 0 20px rgba(255, 141, 161, 0.2),
+    inset 0 0 5px rgba(255, 141, 161, 0.1);
+}
+
+/* Hide default cursor on desktop only */
+@media (pointer: fine) {
+ /* * { cursor: none !important; }*/
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+.skill-card.animate-in {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Neon text glow */
+.neon-text {
+  text-shadow:
+    0 0 7px rgba(255, 141, 161, 0.8),
+    0 0 20px rgba(255, 141, 161, 0.5),
+    0 0 40px rgba(255, 141, 161, 0.3);
+}
+
+/* Neon border glow */
+.neon-border {
+  box-shadow: 
+    0 0 5px rgba(255, 141, 161, 0.4),
+    0 0 20px rgba(255, 141, 161, 0.2),
+    inset 0 0 5px rgba(255, 141, 161, 0.1);
+}
+
+/* Neon button glow */
+.neon-button{
+  box-shadow:
+    0 0 10px rgba(255, 141, 161, 0.6),
+    0 0 30px rgba(255, 141, 161, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.neon-button:hover {
+  box-shadow:
+    0 0 15px rgba(255, 141, 161, 0.9),
+    0 0 40px rgba(255, 141, 161, 0.5),
+    0 0 80px rgba(255, 141, 161, 0.2);
+}
+
+.clip-bottom {
+  clip-path: inset(-100px -100px 0px -100px);
+  /* top: -100px (bleeds at top edge */
+  /* right: -100px (bleeds out right) */
+  /* bottom: 0px (clips out bottom) */
+  /* left: -100px (bleeds out left) */
+}
+
+section {
+  scroll-margin-top: 70px; /* slightly more than your header height */
+}
+
+@media (pointer: fine) {
+/*  * { cursor: none !important; }*/
+}
+
+/* Pastel glow utilities */
+.pastel-glow {
+  box-shadow:
+    0 0 20px rgba(184, 169, 255, 0.2),
+    0 0 40px rgba(255, 141, 161, 0.1);
+}
+
+.pastel-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(184, 169, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(124, 110, 245, 0.08);
+  transition: all 0.3s ease;
+}
+
+.dark .pastel-card {
+  background: rgba(30, 30, 64, 0.6);
+  border: 1px solid rgba(184, 169, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.pastel-card:hover {
+  border-color: rgba(184, 169, 255, 0.6);
+  box-shadow: 0 12px 40px rgba(124, 110, 245, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #7c6ef5, #ff8da1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ambient glow blobs */
+.bg-glow::before {
+  content: '';
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(184, 169, 255, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-glow::after {
+  content: '';
+  bottom: -20%;
+  left: 20%;
+  width: 500px;
+  height: 500px;
+  background: radiam-gradient(circle, rgba(255, 141, 161, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.anim-fadeup {
+  opacity: 10;
+  animation: fadeUp 0.7s ease-out forwards;
+}
+.anim-fadein {
+  opacity: 0;
+  animation: fadeIn 0.7s ease-out forwards;
+}
+
+.anim-width {
+  width: 0;
+  animation: slideWidth 0.7s  ease-out forwards;
+}
+
+/* Temporary debug — remove after 
+@media (min-width: 1280px) {
+  body::before {
+    content: "XL ACTIVE";
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: red;
+    color: white;
+    padding: 4px 8px;
+  }
+}*/
