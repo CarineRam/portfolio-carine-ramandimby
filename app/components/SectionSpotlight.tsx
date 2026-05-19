@@ -98,7 +98,7 @@ export default function SectionSpotlight({ beams, darkMode }: Props) {
       // ── 2. Rounded cap ───────────────────────────────────────────────
       // Flattened ellipse sitting right at the apex of the cone.
       // scaleY < 1 flattens it into an arc shape matching the lamp in the ref image.
-      {/*const capGrad = ctx.createRadialGradient(0, capY, 0, 0, capY, capR * 1.5);
+      /*const capGrad = ctx.createRadialGradient(0, capY, 0, 0, capY, capR * 1.5);
       capGrad.addColorStop(0,   `rgba(${color}, ${opacity})`);
       capGrad.addColorStop(0.35,`rgba(${color}, ${opacity * 0.75})`);
       capGrad.addColorStop(0.7, `rgba(${color}, ${opacity * 0.25})`);
@@ -110,11 +110,11 @@ export default function SectionSpotlight({ beams, darkMode }: Props) {
       ctx.arc(0, capY / 0.5, capR, 0, Math.PI * 2);
       ctx.fillStyle = capGrad;
       ctx.fill();
-      ctx.restore(); */}
+      ctx.restore(); */
 
       // ── 3. Bright hotspot ────────────────────────────────────────────
       // Small intense glow right at the center of the cap
-      {/*ctx.save();
+      /*ctx.save();
       const hotGrad = ctx.createRadialGradient(0, capY * 0.5, 0, 0, capY * 0.5, capR * 0.7);
       hotGrad.addColorStop(0,   `rgba(${color}, ${opacity})`);
       hotGrad.addColorStop(0.4, `rgba(${color}, ${opacity * 0.1})`);
@@ -123,7 +123,7 @@ export default function SectionSpotlight({ beams, darkMode }: Props) {
       ctx.arc(0, capY * 0.5, capR * 0.5, 0, Math.PI * 2);
       ctx.fillStyle = hotGrad;
       ctx.fill();
-      ctx.restore();*/}
+      ctx.restore();*/
 
       ctx.restore();
 

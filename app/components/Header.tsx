@@ -101,7 +101,7 @@ export default function Header({ darkMode, setDarkMode }: HeaderProps) {
             transition-all duration-300
           "
         >
-          Let's Talk
+          Let`&apos;`s Talk
         </a>
 
         {/* Mobile hamburger */}

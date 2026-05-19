@@ -338,7 +338,7 @@ function Projects({ darkMode }: { darkMode: boolean }) {
         <span className='block w-full h-3 bg-[#ff8da1] mt-4 mb-16' />
       </div>
       <div className='hidden md:block'>
-        <DesktopExpandingCards />
+        <DesktopExpandingCards darkMode={darkMode} /> 
       </div>
       <div className='md:hidden'>
         <MobileCarousel />
